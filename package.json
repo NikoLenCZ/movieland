@@ -2,12 +2,13 @@
   "name": "movieland",
   "version": "0.0.0",
   "scripts": {
-    "ng": "node -r dotenv/config ./node_modules/.bin/ng",
-    "start": "node -r dotenv/config mynode.js && ng serve",
-    "build": "node -r dotenv/config ./node_modules/.bin/ng build",
-    "watch": "node -r dotenv/config ./node_modules/.bin/ng build --watch --configuration development",
-    "test": "node -r dotenv/config ./node_modules/.bin/ng test",
-    "serve:ssr:movieland": "node dist/movieland/server/server.mjs"
+    "generate-env": "node generate-env.js",
+    "prestart": "npm run generate-env",
+    "start": "ng serve",
+    "prebuild": "npm run generate-env",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
