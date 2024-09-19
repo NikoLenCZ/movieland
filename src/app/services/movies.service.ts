@@ -21,4 +21,8 @@ export class MoviesService {
     return this.http.get<ListResponse<Movie>>(`https://api.themoviedb.org/3/movie/popular`);
   }
 
+  getMovieDetail(id: number) {
+    return this.http.get<Movie>(`https://api.themoviedb.org/3/movie/${id}`);
+  }
+
 }
