@@ -1,0 +1,14 @@
+<h2>Crew</h2>
+@if (person.crew.length > 0) {
+  @for (crew of person.crew; track crew.id) {
+    @if (crew.profile_path) {
+      <img src="https://image.tmdb.org/t/p/w500{{crew.profile_path}}" alt="{{ crew.name }}">
+    } @else {
+      <img src="/img/person-placeholder.png" alt="{{ crew.name }}">
+    }
+    <p>name: {{ crew.name }}</p>
+    <p>job: {{ crew.job }}</p>
+  }
+} @else {
+  <p>No crew found</p>
+}

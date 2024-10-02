@@ -1,0 +1,17 @@
+<h2>Actors</h2>
+@if (person.cast.length > 0) {
+  @for (actor of person.cast; track actor.id) {
+    @if (actor.profile_path) {
+    <img
+      src="https://image.tmdb.org/t/p/w500{{actor.profile_path}}"
+      alt="{{ actor.name }}"
+    >
+  } @else {
+    <img src="/img/person-placeholder.png" alt="{{ actor.name }}">
+  }
+  <p>name: {{ actor.name }}</p>
+    <p>character: {{ actor.character }}</p>
+  }
+} @else {
+  <p>No actors found</p>
+}

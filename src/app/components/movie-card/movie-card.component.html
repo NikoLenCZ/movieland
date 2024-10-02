@@ -3,4 +3,7 @@
       <p>{{ movie.title }}</p>
       <p>{{ movie.vote_average * 10 | number:'1.0-0' }}%</p>
     </div>
-    <p>{{ movie.release_date }}</p>
+    <div class="movieActions">
+      <p>{{ movie.release_date }}</p>
+      <a [routerLink]="['/detail', movie.id]">View detail</a>
+    </div>

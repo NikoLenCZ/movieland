@@ -1,1 +1,12 @@
-<pre>{{ movie$ | async | json }}</pre>
+@if (movie$ | async; as movieDetail) {
+  <app-movie-preview [movieDetail]="movieDetail"></app-movie-preview>
+ } @else { <p>Loading...</p> }
+
+ @if (person$ | async; as person) {
+  <app-actors-preview [person]="person"></app-actors-preview>
+  <app-crew-preview [person]="person"></app-crew-preview>
+}
+
+@if (similarMovies$ | async; as similarMovies) {
+  <app-similar-preview [similarMovies]="similarMovies"></app-similar-preview>
+}
