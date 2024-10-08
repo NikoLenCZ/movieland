@@ -1,0 +1,15 @@
+:host {
+  @apply mt-8;
+}
+
+button {
+  @apply px-4 py-2 rounded-md;
+}
+
+.primary {
+  @apply bg-cyan-700 font-bold hover:bg-cyan-600 transition-colors duration-300;
+  }
+
+.secondary {
+  @apply border-cyan-700 border-2 font-bold hover:bg-cyan-700 transition-colors duration-300;
+  }

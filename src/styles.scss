@@ -1,25 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import 'ngx-toastr/toastr';
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  @apply box-border m-0 p-0;
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  @apply h-full m-0 p-0;
+}
+
+body {
+  @apply bg-neutral-900 text-white;
+}
+
+h1 {
+  @apply text-5xl font-bold mb-12 mt-8 text-center;
+}
+
+h2 {
+  @apply text-2xl font-bold mb-8 mt-4 text-center;
 }
 
 img, video {
-  max-width: 100%;
-  height: auto;
+  @apply w-full h-auto rounded-md;
 }
 
 img, svg, video, canvas, audio, iframe, embed, object {
-  display: block;
-  vertical-align: middle;
+  @apply block align-middle;
+}
+
+a:not(.main-logo), .link {
+  @apply text-fuchsia-600 font-medium hover:text-fuchsia-400 transition-colors duration-300 underline;
 }

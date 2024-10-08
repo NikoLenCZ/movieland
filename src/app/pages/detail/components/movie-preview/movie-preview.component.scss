@@ -1,0 +1,51 @@
+.movie-detail__backdrop {
+  @apply absolute top-0 left-0 opacity-20 rounded-none;
+}
+
+.movie-detail__poster {
+  @apply relative mx-auto max-w-[18rem] lg:max-w-[24rem] xl:max-w-[28rem];
+}
+
+.movie-detail__production--background {
+  @apply w-44 bg-white p-2;
+}
+
+.movie-detail__production--placeholder {
+  @apply w-28;
+}
+
+.movie-detail__title {
+  @apply text-5xl;
+}
+
+.movie-detail__header-container {
+  @apply grid grid-cols-2 relative my-12;
+}
+
+.movie-detail__tagline {
+  @apply text-center text-xl;
+}
+
+.movie-detail__content {
+  @apply pl-12 pr-6;
+}
+
+.movie-detail__overview {
+  @apply pt-12;
+}
+
+.movie-detail__overview-title {
+  @apply text-xl font-bold text-left mb-4;
+}
+
+.movie-detail__production-company-wrapper {
+  @apply flex flex-wrap justify-center gap-4 items-baseline;
+}
+
+.movie-detail__collection-wrapper {
+  @apply flex flex-wrap justify-center gap-4 items-baseline;
+}
+
+.movie-detail__collection--img {
+  @apply max-h-[13rem] w-auto;
+}

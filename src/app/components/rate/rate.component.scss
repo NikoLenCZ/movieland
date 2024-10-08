@@ -1,0 +1,19 @@
+:host {
+  @apply aspect-square w-12 h-12 inline-grid;
+}
+
+.rating {
+  @apply font-bold text-base leading-8 text-white m-0 text-center p-2 bg-neutral-900/80 rounded-full border-[3px] aspect-square;
+}
+
+.low {
+  @apply border-rose-600;
+}
+
+.medium {
+  @apply border-amber-600;
+}
+
+.high {
+  @apply border-green-600;
+}

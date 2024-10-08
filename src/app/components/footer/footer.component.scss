@@ -1,5 +1,5 @@
-footer {
-  margin-top: auto;
+:host {
+  @apply mt-7;
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
   padding-block: 1rem;
@@ -7,5 +7,8 @@ footer {
   color: rgb(255 255 255 / var(--tw-text-opacity));
   a {
     color: inherit;
+  }
+  p {
+    @apply text-center;
   }
 }

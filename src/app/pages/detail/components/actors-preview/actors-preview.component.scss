@@ -1,0 +1,15 @@
+:host {
+  @apply block mt-12;
+}
+
+img {
+  @apply  w-[18rem] h-[18rem] object-cover mb-1;
+}
+
+.actor-wrapper {
+  @apply flex gap-4 flex-wrap justify-center;
+}
+
+.actor-wrapper__item {
+  @apply flex flex-col;
+}

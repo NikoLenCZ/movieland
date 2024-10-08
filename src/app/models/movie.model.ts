@@ -8,7 +8,7 @@ export interface Movie {
   overview:          string;
   popularity:        number;
   poster_path:       string;
-  release_date:      string;
+  release_date:      Date;
   title:             string;
   video:             boolean;
   vote_average:      number;
@@ -74,52 +74,9 @@ export interface SpokenLanguage {
   name:         string;
 }
 
-
-export interface RecommendationMovieResponse {
-  page: number;
-  results: RecommendationMovieResult[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface RecommendationMovieResult {
-  backdrop_path:     string | null;
-  id:                number;
-  title:             string;
-  original_title:    string;
-  overview:          string;
-  poster_path:       string;
-  media_type:        string;
-  adult:             boolean;
-  original_language: string;
-  genre_ids:         number[];
-  popularity:        number;
-  release_date:      Date;
-  video:             boolean;
-  vote_average:      number;
-  vote_count:        number;
-}
-
 export interface SimilarMovieResponse {
   page:          number;
-  results:       SimilarMovieResult[];
+  results:       Movie[];
   total_pages:   number;
   total_results: number;
-}
-
-export interface SimilarMovieResult {
-  adult:             boolean;
-  backdrop_path:     string | null;
-  genre_ids:         number[];
-  id:                number;
-  original_language: string;
-  original_title:    string;
-  overview:          string;
-  popularity:        number;
-  poster_path:       string;
-  release_date:      Date;
-  title:             string;
-  video:             boolean;
-  vote_average:      number;
-  vote_count:        number;
 }

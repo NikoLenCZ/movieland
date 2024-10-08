@@ -1,9 +1,14 @@
-    <img src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="{{ movie.title }}">
+<a [routerLink]="['/detail', movie.id]">
+  @if (movie.poster_path) {
+    <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{ movie.title }}">
+  }
+  @else {
+    <img src="/img/movie-placeholder.png" alt="{{ movie.title }}">
+  }
     <div class="movieInfo">
-      <p>{{ movie.title }}</p>
-      <p>{{ movie.vote_average * 10 | number:'1.0-0' }}%</p>
+      <p class="movie-title">{{ movie.title }}</p>
+      <p class="movie-subtitle">release on: {{ movie.release_date | date:'dd.MM.yyyy' }}</p>
+      <p class="movie-view-info link">view info</p>
     </div>
-    <div class="movieActions">
-      <p>{{ movie.release_date }}</p>
-      <a [routerLink]="['/detail', movie.id]">View detail</a>
-    </div>
+    <app-rate class="rate-absolute" [vote_average]="movie.vote_average"></app-rate>
+  </a>
