@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-  @Input() type: 'primary' | 'secondary' = 'primary';
+  @Input() type: 'primary' | 'secondary' | 'watchlist' | 'watchlist-secondary' = 'primary';
   @Input() text: string = 'Button';
   @Input() click: () => void = () => {};
 }

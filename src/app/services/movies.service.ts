@@ -22,11 +22,11 @@ export class MoviesService {
     return this.http.get<ListResponse<Movie>>(`https://api.themoviedb.org/3/movie/popular`);
   }
 
-  getMovieDetail(id: number) {
+  getMovieDetail(id: MovieDetail['id']) {
     return this.http.get<MovieDetail>(`https://api.themoviedb.org/3/movie/${id}`);
   }
 
-  getSimilarMovies(id: number) {
+  getSimilarMovies(id: Movie['id']) {
     return this.http.get<SimilarMovieResponse>(`https://api.themoviedb.org/3/movie/${id}/similar`);
   }
 

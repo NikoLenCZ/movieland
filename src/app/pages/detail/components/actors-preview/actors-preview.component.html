@@ -13,7 +13,7 @@
       </div>
     }
   </div>
-  @if (showCount < person.cast.length) {
+  @if (person.cast.length) {
     <div class="flex justify-center gap-3 mt-6 px-12">
       @if (person.cast.length > showCount) {
         <app-button text="Show more actors" type="primary" (click)="showMore()"></app-button>

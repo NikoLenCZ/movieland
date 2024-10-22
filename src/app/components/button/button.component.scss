@@ -13,3 +13,11 @@ button {
 .secondary {
   @apply border-cyan-700 border-2 font-bold hover:bg-cyan-700 transition-colors duration-300;
   }
+
+.watchlist {
+  @apply bg-fuchsia-700 font-bold hover:bg-fuchsia-600 transition-colors duration-300;
+}
+
+.watchlist-secondary {
+  @apply border-fuchsia-700 border-2 font-bold hover:bg-fuchsia-700 transition-colors duration-300;
+}

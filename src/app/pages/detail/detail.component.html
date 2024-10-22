@@ -1,12 +1,29 @@
-@if (movie$ | async; as movieDetail) {
-  <app-movie-preview [movieDetail]="movieDetail"></app-movie-preview>
- } @else { <p>Loading...</p> }
 
- @if (person$ | async; as person) {
-  <app-actors-preview [person]="person"></app-actors-preview>
-  <app-crew-preview [person]="person"></app-crew-preview>
+
+@if (movie$ | async; as movieDetail) {
+  @if (loading) {
+    <p class="text-center text-2xl">Loading movie details...</p>
+  } @else {
+  <div class="flex justify-end z-50">
+    <app-button class="z-50" [type]="watchlistService.isInWatchlist(movieDetail.id) ? 'watchlist-secondary' : 'watchlist'" [text]="watchlistService.isInWatchlist(movieDetail.id) ? 'remove from watchlist' : 'add to watchlist'" (click)="toggleWatchlist(movieDetail.id)"/>
+    </div>
+    <app-movie-preview [movieDetail]="movieDetail"/>
+  }
 }
 
-@if (similarMovies$ | async; as similarMovies) {
-  <app-similar-preview [similarMovies]="similarMovies"></app-similar-preview>
+@if (loading) {
+  <p class="text-center text-2xl">Loading actors and crew...</p>
+} @else {
+  @if (person$ | async; as person) {
+  <app-actors-preview [person]="person"/>
+    <app-crew-preview [person]="person"/>
+  }
+}
+
+@if (loading) {
+  <p class="text-center text-2xl">Loading similar movies...</p>
+} @else {
+  @if (similarMovies$ | async; as similarMovies) {
+    <app-similar-preview [similarMovies]="similarMovies"/>
+  }
 }
