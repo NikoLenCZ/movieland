@@ -1,37 +1,45 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable} from '@angular/core';
 import { MovieDetail } from '../models/movie.model';
+import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WatchlistService {
 
-  constructor() { }
+  private toastr = inject(ToastrService);
+  private watchlistSubject = new BehaviorSubject<MovieDetail['id'][]>(JSON.parse(localStorage.getItem('watchlist') || '[]'));
 
-  private watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
-
-  addToWatchlist(movieId: MovieDetail['id']): void {
-    if (!this.watchlist.includes(movieId)) {
-      this.watchlist.push(movieId);
-      localStorage.setItem('watchlist', JSON.stringify(this.watchlist));
-      console.log('watchlist', this.watchlist);
-    }
+  getWatchlist(): Observable<MovieDetail['id'][]> {
+    return this.watchlistSubject.asObservable();
   }
 
-  isInWatchlist(movieId: MovieDetail['id']): boolean {
-    return this.watchlist.includes(movieId);
+  isInWatchlist(movieId: MovieDetail['id']): Observable<boolean> {
+    return this.watchlistSubject.pipe(
+      map(watchlist => watchlist.includes(movieId))
+    );
+  }
+
+  addToWatchlist(movieId: MovieDetail['id']): void {
+    let currentWatchlist = this.watchlistSubject.value;
+    if (!currentWatchlist.includes(movieId)) {
+      currentWatchlist = [...currentWatchlist, movieId];
+      localStorage.setItem('watchlist', JSON.stringify(currentWatchlist));
+      this.watchlistSubject.next(currentWatchlist);
+      this.toastr.success('Added to watchlist');
+    }
   }
 
   removeFromWatchlist(movieId: MovieDetail['id']): void {
-    const index = this.watchlist.indexOf(movieId);
+    let currentWatchlist = this.watchlistSubject.value;
+    const index = currentWatchlist.indexOf(movieId);
     if (index > -1) {
-      this.watchlist.splice(index, 1);
-      localStorage.setItem('watchlist', JSON.stringify(this.watchlist));
-      console.log('watchlist', this.watchlist);
+      currentWatchlist = currentWatchlist.filter(id => id !== movieId);
+      localStorage.setItem('watchlist', JSON.stringify(currentWatchlist));
+      this.watchlistSubject.next(currentWatchlist);
+      this.toastr.warning('Removed from watchlist');
     }
   }
 
-  getWatchlist(): string[] {
-    return this.watchlist;
-  }
 }

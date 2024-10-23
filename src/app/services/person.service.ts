@@ -10,8 +10,4 @@ export class PersonService {
 
   http = inject(HttpClient);
 
-  getPerson(id: MovieDetail['id']) {
-    return this.http.get<PersonResponse>(`https://api.themoviedb.org/3/movie/${id}/credits`);
-  }
-
 }

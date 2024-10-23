@@ -1,4 +1,4 @@
-@if (person.cast.length > 0) {
+@if (person.length > 0) {
   <h2>Actors</h2>
   <div class="actor-wrapper">
     @for (actor of displayedActors; track actor.id) {
@@ -13,9 +13,9 @@
       </div>
     }
   </div>
-  @if (person.cast.length) {
+  @if (person.length) {
     <div class="flex justify-center gap-3 mt-6 px-12">
-      @if (person.cast.length > showCount) {
+      @if (person.length > showCount) {
         <app-button text="Show more actors" type="primary" (click)="showMore()"></app-button>
     } @else {
         <app-button text="Show less actors" type="secondary" (click)="showLess()"></app-button>

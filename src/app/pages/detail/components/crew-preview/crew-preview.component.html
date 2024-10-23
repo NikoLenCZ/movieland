@@ -1,4 +1,4 @@
-@if (person.crew.length > 0) {
+@if (person.length > 0) {
   <h2>Crew</h2>
   <div class="crew-wrapper">
     @for (crew of displayedCrew; track crew.id) {
@@ -17,7 +17,7 @@
     }
   </div>
   <div class="flex justify-center gap-3 mt-6 px-12">
-    @if (showCount < person.crew.length) {
+    @if (showCount < person.length) {
       <app-button text="Show more persons" type="primary" (click)="showMore()"></app-button>
     } @else {
       <app-button text="Show less persons" type="secondary" (click)="showLess()"></app-button>

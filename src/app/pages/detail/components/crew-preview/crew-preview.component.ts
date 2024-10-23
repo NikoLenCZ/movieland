@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PersonResponse } from '../../../../models/person.model';
+import { Crew } from '../../../../models/person.model';
 import { ButtonComponent } from '../../../../components/button/button.component';
 
 @Component({
@@ -13,14 +13,14 @@ import { ButtonComponent } from '../../../../components/button/button.component'
 export class CrewPreviewComponent {
   showCount = 10;
 
-  @Input() person!: PersonResponse;
+  @Input() person!: Crew[];
 
   get displayedCrew() {
-    return this.person.crew.slice(0, this.showCount);
+    return this.person.slice(0, this.showCount);
   }
 
   showMore(): void {
-    this.showCount = this.person.crew.length;
+    this.showCount = this.person.length;
   }
 
   showLess(): void {

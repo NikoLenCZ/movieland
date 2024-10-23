@@ -2,15 +2,13 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
-import { PersonService } from '../../services/person.service';
 import { MoviePreviewComponent } from './components/movie-preview/movie-preview.component';
 import { ActorsPreviewComponent } from './components/actors-preview/actors-preview.component';
 import { CrewPreviewComponent } from './components/crew-preview/crew-preview.component';
 import { SimilarPreviewComponent } from './components/similar-preview/similar-preview.component';
 import { WatchlistService } from '../../services/watchlist.service';
 import { ButtonComponent } from '../../components/button/button.component';
-import { ToastrService } from 'ngx-toastr';
-import { map, switchMap, tap } from 'rxjs';
+import { combineLatest, map, Observable, skip, startWith, switchMap, take, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MovieDetail } from '../../models/movie.model';
 @Component({
@@ -30,52 +28,33 @@ import { MovieDetail } from '../../models/movie.model';
 export class DetailComponent {
 
   private movieService = inject(MoviesService);
-  private personService = inject(PersonService);
   private route = inject(ActivatedRoute);
-  private toastr = inject(ToastrService);
-  watchlistService = inject(WatchlistService);
+  private watchlistService = inject(WatchlistService);
 
-  loading = true;
-
-  movieId$ = this.route.paramMap.pipe(
-    map(params => Number(params.get('id')!)),
-    tap(() => {
+  constructor() {
+    this.route.paramMap.pipe(skip(1), takeUntilDestroyed()).subscribe(() => {
       window.scrollTo(0, 0);
-      this.loading = true;
-      console.log('loading', this.loading);
-    })
-  );
+    });
+  }
 
-  movie$ = this.movieId$.pipe(
-    switchMap(movieId => this.movieService.getMovieDetail(movieId)),
-    tap(() => {
-      this.loading = false;
-      console.log('loading', this.loading);
-    })
-  );
-
-  person$ = this.movieId$.pipe(
-    switchMap(movieId => this.personService.getPerson(movieId)),
-    tap(() => {
-      this.loading = false;
-    })
-  );
-
-  similarMovies$ = this.movieId$.pipe(
-    switchMap(movieId => this.movieService.getSimilarMovies(movieId)),
-    tap(() => {
-      this.loading = false;
-    })
+  movie$ = this.route.paramMap.pipe(
+    map(params => Number(params.get('id')!)),
+    switchMap(movieId => combineLatest([this.movieService.getMovieDetail(movieId), this.watchlistService.isInWatchlist(movieId)]).pipe(
+      map(([movieDetail, isInWatchlist]) => ({movieDetail, isInWatchlist})),
+      startWith(null)))
   );
 
   toggleWatchlist(movieId: MovieDetail['id']) {
-    if (this.watchlistService.isInWatchlist(movieId)) {
-      this.watchlistService.removeFromWatchlist(movieId);
-      this.toastr.warning('Removed from watchlist');
-    } else {
-      this.watchlistService.addToWatchlist(movieId);
-      this.toastr.success('Added to watchlist');
-    }
+    this.watchlistService.isInWatchlist(movieId).pipe(
+      take(1),
+      tap(isInWatchlist => {
+        if (isInWatchlist) {
+          this.watchlistService.removeFromWatchlist(movieId);
+        } else {
+          this.watchlistService.addToWatchlist(movieId);
+        }
+      })
+    ).subscribe();
   }
 
 }

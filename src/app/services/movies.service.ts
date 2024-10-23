@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie, MovieDetail } from '../models/movie.model';
 import { ListResponse } from '../models/list-response.model';
-import { SimilarMovieResponse } from '../models/movie.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,11 +23,7 @@ export class MoviesService {
   }
 
   getMovieDetail(id: MovieDetail['id']) {
-    return this.http.get<MovieDetail>(`https://api.themoviedb.org/3/movie/${id}`);
-  }
-
-  getSimilarMovies(id: Movie['id']) {
-    return this.http.get<SimilarMovieResponse>(`https://api.themoviedb.org/3/movie/${id}/similar`);
+    return this.http.get<MovieDetail>(`https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,similar`);
   }
 
 }

@@ -1,7 +1,8 @@
+import { PersonResponse } from "./person.model";
 export interface Movie {
   adult:             boolean;
   backdrop_path:     string | null;
-  genre_ids:         number[];
+  genre_ids:         Genre['id'][];
   id:                number;
   original_language: string;
   original_title:    string;
@@ -15,33 +16,22 @@ export interface Movie {
   vote_count:        number;
 }
 
-export interface MovieDetail {
-  adult:                 boolean;
-  backdrop_path:         string | null;
+export interface MovieDetail extends Omit<Movie, 'genre_ids'> {
   belongs_to_collection: BelongsToCollection;
   budget:                number;
+  credits:               PersonResponse;
   genres:                Genre[];
   homepage:              string;
-  id:                    number;
   imdb_id:               string;
   origin_country:        string[];
-  original_language:     string;
-  original_title:        string;
-  overview:              string;
-  popularity:            number;
-  poster_path:           string;
   production_companies:  ProductionCompany[];
   production_countries:  ProductionCountry[];
-  release_date:          Date;
   revenue:               number;
   runtime:               number;
+  similar:               SimilarMovieResponse;
   spoken_languages:      SpokenLanguage[];
   status:                string;
   tagline:               string;
-  title:                 string;
-  video:                 boolean;
-  vote_average:          number;
-  vote_count:            number;
 }
 
 export interface BelongsToCollection {
