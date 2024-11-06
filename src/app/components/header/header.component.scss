@@ -1,5 +1,9 @@
+:host {
+  @apply self-start;
+}
+
 header {
-  @apply flex items-baseline gap-4 max-h-20 bg-black pl-8 pr-8 text-left text-white;
+  @apply flex gap-4 items-baseline max-h-20 bg-black pl-8 pr-8 text-left text-white;
 }
 
 .app-title {
@@ -12,9 +16,25 @@ header {
 }
 
 ul {
-  @apply flex list-none m-0 p-0;
+  @apply flex gap-4 list-none m-0 p-0;
 }
 
 a {
   @apply text-inherit;
+}
+
+.disabled {
+  @apply pointer-events-none opacity-50;
+}
+
+.badge {
+  @apply p-2;
+}
+
+.badge-container {
+  @apply bg-cyan-700 text-white rounded-full min-w-6 min-h-6 text-center leading-6 relative -bottom-2 text-sm aspect-square max-w-8 flex items-center justify-center;
+}
+
+.zero {
+  @apply bg-slate-600;
 }

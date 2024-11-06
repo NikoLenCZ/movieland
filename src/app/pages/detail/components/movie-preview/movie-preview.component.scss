@@ -14,12 +14,16 @@
   @apply w-28;
 }
 
+.movie-detail__header {
+  @apply z-50 relative;
+}
+
 .movie-detail__title {
-  @apply text-5xl;
+  @apply text-3xl 2xl:text-5xl;
 }
 
 .movie-detail__header-container {
-  @apply grid grid-cols-2 relative my-12;
+  @apply grid md:grid-cols-2 relative my-12;
 }
 
 .movie-detail__tagline {
@@ -39,7 +43,7 @@
 }
 
 .movie-detail__production-company-wrapper {
-  @apply flex flex-wrap justify-center gap-4 items-baseline;
+  @apply flex flex-wrap justify-center gap-6 items-baseline;
 }
 
 .movie-detail__collection-wrapper {
@@ -48,4 +52,8 @@
 
 .movie-detail__collection--img {
   @apply max-h-[13rem] w-auto;
+}
+
+.movie-detail__production-company {
+  @apply flex flex-col items-center gap-y-1;
 }

@@ -1,10 +1,12 @@
 @if (movie$ | async; as m) {
   <div class="flex justify-end z-50">
-    <app-button class="z-50" [type]="m.isInWatchlist ? 'watchlist-secondary' : 'watchlist'" [text]="m.isInWatchlist ? 'remove from watchlist' : 'add to watchlist'" (click)="toggleWatchlist(m.movieDetail.id)"/>
+    <app-button class="z-50" [type]="m.isInWatchlist ? 'watchlist-secondary' : 'watchlist'" (click)="toggleWatchlist(m.movieDetail.id)">
+      {{ m.isInWatchlist ? 'remove from watchlist' : 'add to watchlist' }}
+    </app-button>
     </div>
     <app-movie-preview [movieDetail]="m.movieDetail"/>
-    <app-actors-preview [person]="m.movieDetail.credits.cast"/>
-    <app-crew-preview [person]="m.movieDetail.credits.crew"/>
+    <app-persons-preview [persons]="m.movieDetail.credits.cast"/>
+    <app-persons-preview [persons]="m.movieDetail.credits.crew"/>
     <app-similar-preview [similarMovies]="m.movieDetail.similar.results"/>
 } @else {
   <p class="text-center text-2xl">Loading movie details...</p>

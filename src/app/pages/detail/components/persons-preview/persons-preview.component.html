@@ -1,0 +1,44 @@
+@if (persons.length > 0) {
+  <h2>{{ isActor(persons[0]) ? 'Actors' : 'Crew' }}</h2>
+  <app-wrapper-list
+    [columnsSm]="2"
+    [columnsMd]="4"
+    [columnsLg]="6"
+  >
+    @for (person of displayedPersons; track person.id) {
+      <div class="person-wrapper__item">
+        @if (person.profile_path) {
+          <img src="https://image.tmdb.org/t/p/w500{{person.profile_path}}" alt="{{ person.name }}">
+        } @else {
+          <img src="/img/person-placeholder.png" alt="{{ person.name }}">
+        }
+        <p>{{ person.name }}</p>
+        @if (isActor(person)) {
+          <p>character: {{ person.character }}</p>
+        }
+        @if (isCrew(person)) {
+          <p>job: {{ person.job }}</p>
+        }
+      </div>
+    }
+  </app-wrapper-list>
+  @if (persons.length > limitPersons) {
+    <div class="persons-actions">
+      @if (!showedAllPersons) {
+        @if (isActor(persons[0])) {
+          <app-button type="primary" (click)="showMore()">Show more actors</app-button>
+        } @else {
+          <app-button type="primary" (click)="showMore()">Show more crew</app-button>
+        }
+      } @else {
+        @if (isActor(persons[0])) {
+          <app-button type="secondary" (click)="showLess()">Show less actors</app-button>
+        } @else {
+          <app-button type="secondary" (click)="showLess()">Show less crew</app-button>
+        }
+      }
+    </div>
+  }
+} @else {
+  <p>No persons found</p>
+}

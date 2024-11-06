@@ -1,0 +1,49 @@
+<app-dropdown></app-dropdown>
+<ul>
+  @for (movie of movieDetails$ | async; track movie.id) {
+    <li class="watchlist__item">
+      <div class="watchlist-item--wrapper">
+        <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{ movie.title }}">
+        <h3>{{ movie.title }}</h3>
+        <div class="actions">
+        <app-button type="primary" (click)="goToDetail(movie.id)"> View detail</app-button>
+        <app-button type="watchlist-secondary" (click)="removeFromWatchlist(movie.id)">Remove</app-button>
+      </div>
+      @if (hasProviders(movie)) {
+        @if (hasProvidersSelected(movie)) {
+        <div class="watchlist__stream-providers">
+          <h4 (click)="toggleStreamVisibility(movie.id)">Available on these streams  <span class="arrow" [class.rotated]="isStreamVisible(movie.id) | async">&#8250;</span></h4>
+          @if (isStreamVisible(movie.id) | async) {
+            <div class="providers">
+              @for (region of movie['watch/providers'].results | keyvalue; track region.key) {
+                @if (selectedRegion(region.key)) {
+                <div class="providers-container">
+                  <p class="mb-2">{{ region.key }}:</p>
+                      @for (service of getProviders(region.value) | keyvalue; track service.key) {
+                        <div class="providers-list">
+                        <span>{{ service.key }}:</span>
+                          @for (provider of service.value; track provider) {
+                              <img src="https://media.themoviedb.org/t/p/original{{provider['logo_path']}}" alt="{{ provider['provider_name'] }}" title="{{ provider['provider_name'] }}">
+                          }
+                        </div>
+                      }
+                </div>
+                }
+              }
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="watchlist__stream-no-providers">No stream services available for this region</p>
+      }
+      } @else {
+        <p class="watchlist__stream-no-providers">No stream services available</p>
+      }
+      </div>
+    </li>
+  } @empty {
+    <li class="text-center text-gray-500 text-2xl font-bold list-none">
+      You have no movies in your watchlist. You can <a class="cursor-pointer" routerLink="./">add some movies here</a>
+    </li>
+  }
+</ul>

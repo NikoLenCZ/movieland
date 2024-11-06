@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
 import { MoviePreviewComponent } from './components/movie-preview/movie-preview.component';
-import { ActorsPreviewComponent } from './components/actors-preview/actors-preview.component';
-import { CrewPreviewComponent } from './components/crew-preview/crew-preview.component';
+import { PersonsPreviewComponent } from './components/persons-preview/persons-preview.component';
 import { SimilarPreviewComponent } from './components/similar-preview/similar-preview.component';
 import { WatchlistService } from '../../services/watchlist.service';
 import { ButtonComponent } from '../../components/button/button.component';
-import { combineLatest, map, Observable, skip, startWith, switchMap, take, tap } from 'rxjs';
+import { combineLatest, map, skip, startWith, switchMap, take, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MovieDetail } from '../../models/movie.model';
 @Component({
@@ -17,9 +16,8 @@ import { MovieDetail } from '../../models/movie.model';
   imports: [
     CommonModule,
     MoviePreviewComponent,
-    ActorsPreviewComponent,
-    CrewPreviewComponent,
     SimilarPreviewComponent,
+    PersonsPreviewComponent,
     ButtonComponent
   ],
   templateUrl: './detail.component.html',

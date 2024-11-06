@@ -1,0 +1,84 @@
+:host {
+  @apply block;
+}
+
+@media (min-width: 90rem) {
+  :host {
+    @apply w-[90rem];
+  }
+}
+
+@media (min-width: 100rem) {
+  :host {
+    @apply w-[100rem];
+  }
+}
+
+
+img {
+  @apply w-10;
+}
+
+ul {
+  @apply list-decimal list-inside pl-4 my-8;
+}
+
+li {
+  @apply list-item pt-4;
+}
+
+li {
+  @apply border-b border-gray-500 border-collapse;
+}
+
+li:last-child {
+  @apply border-b-0;
+}
+
+li::marker {
+  @apply text-cyan-500 font-bold text-xl;
+}
+
+.watchlist-item--wrapper {
+  @apply flex flex-wrap justify-between items-end gap-4 pb-4 px-4 ;
+}
+
+h3 {
+  @apply text-lg font-bold;
+}
+
+h4 {
+  @apply cursor-pointer font-bold mb-4 text-fuchsia-500 hover:text-fuchsia-400 transition-colors duration-300;
+}
+
+.providers {
+  @apply flex flex-wrap gap-6;
+}
+
+.providers-container {
+  @apply border border-transparent shadow-[0_3px_13px_rgba(0,0,0,0.1)] shadow-cyan-500/50 rounded-md p-4;
+}
+
+.providers-list {
+  @apply flex flex-wrap gap-2 pt-2;
+}
+
+.actions {
+  @apply flex items-center gap-2;
+}
+
+.watchlist__stream-providers {
+  @apply w-full text-center;
+}
+
+.watchlist__stream-no-providers {
+  @apply w-full text-center text-gray-500 font-bold;
+}
+
+.arrow {
+  @apply inline-block text-xl transition-transform duration-300 w-8 h-8 rotate-90;
+}
+
+.arrow.rotated {
+  @apply transform -rotate-90;
+}

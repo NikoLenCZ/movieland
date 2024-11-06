@@ -1,0 +1,15 @@
+:host {
+  @apply block mt-12;
+}
+
+img {
+  @apply  aspect-square w-full object-cover mb-1;
+}
+
+.person-wrapper__item p {
+  @apply text-sm;
+}
+
+.persons-actions {
+  @apply flex justify-center mt-6;
+}

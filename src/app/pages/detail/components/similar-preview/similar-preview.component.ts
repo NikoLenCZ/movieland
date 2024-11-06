@@ -18,20 +18,19 @@ import { ButtonComponent } from '../../../../components/button/button.component'
 })
 export class SimilarPreviewComponent {
   @Input() similarMovies!: Movie[];
-  movieLimit = 10;
+  readonly limitSimilar = 10;
+  showAllSimilar = false;
+
+  get displayedSimilarMovies() {
+    return this.showAllSimilar ? this.similarMovies : this.similarMovies.slice(0, this.limitSimilar);
+  }
 
   showMore() {
-    this.movieLimit += 10;
-    if (this.movieLimit > this.similarMovies.length) {
-      this.movieLimit = this.similarMovies.length;
-    }
+    this.showAllSimilar = true;
   }
 
   showLess() {
-    this.movieLimit -= 10;
-    if (this.movieLimit < 10) {
-      this.movieLimit = 10;
-    }
+    this.showAllSimilar = false;
   }
 
 }

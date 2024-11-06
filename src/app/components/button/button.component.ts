@@ -9,6 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() type: 'primary' | 'secondary' | 'watchlist' | 'watchlist-secondary' = 'primary';
-  @Input() text: string = 'Button';
-  @Input() click: () => void = () => {};
+
 }

@@ -2,7 +2,13 @@
   <span class="app-title"><a class="main-logo" routerLink="/"> {{ title }} </a></span>
   <nav>
     <ul>
-      <li><a routerLink="/movies">Movies</a></li>
+      <!-- <li><a routerLink="/movies">Movies</a></li> -->
+      <li class="flex">
+        <a routerLink="/watchlist">Watchlist</a>
+          <div [class.zero]="(count$ | async) === 0" class="badge-container">
+            <span class="badge">{{ count$ | async }}</span>
+          </div>
+      </li>
     </ul>
   </nav>
 </header>

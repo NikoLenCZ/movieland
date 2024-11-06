@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrewPreviewComponent } from './crew-preview.component';
+import { DropdownComponent } from './dropdown.component';
 
-describe('CrewPreviewComponent', () => {
-  let component: CrewPreviewComponent;
-  let fixture: ComponentFixture<CrewPreviewComponent>;
+describe('DropdownComponent', () => {
+  let component: DropdownComponent;
+  let fixture: ComponentFixture<DropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrewPreviewComponent]
+      imports: [DropdownComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CrewPreviewComponent);
+    fixture = TestBed.createComponent(DropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
