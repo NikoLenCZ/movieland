@@ -3,11 +3,20 @@
   <nav>
     <ul>
       <!-- <li><a routerLink="/movies">Movies</a></li> -->
-      <li class="flex">
+      <li class="nav-item">
         <a routerLink="/watchlist">Watchlist</a>
-          <div [class.zero]="(count$ | async) === 0" class="badge-container">
-            <span class="badge">{{ count$ | async }}</span>
+          <div [class.zero]="(watchlistCount$ | async) === 0" class="badge-container primary">
+            <span class="badge">{{ watchlistCount$ | async }}</span>
           </div>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/rated-movies">Rated Movies</a>
+        <!-- <div [class.zero]="(ratedMoviesCount$ | async) === 0" class="badge-container secondary">
+          <span class="badge">{{ ratedMoviesCount$ | async }}</span>
+        </div> -->
+        <div class="badge-container secondary">
+          <span class="badge">{{ ratedMoviesCount$ | async }}</span>
+        </div>
       </li>
     </ul>
   </nav>

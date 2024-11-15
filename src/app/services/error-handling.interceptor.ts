@@ -9,8 +9,9 @@ import { inject } from '@angular/core';
 
     return next(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('Error:', error);
-        toastr.error(`The error status code is ${error.status}.`);
+        if(!error.url?.includes('/rated/')) {
+          toastr.error(`The error status code is ${error.status}.`);
+        }
         return throwError(() => error);
       })
     );

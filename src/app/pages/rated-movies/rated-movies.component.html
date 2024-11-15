@@ -1,0 +1,19 @@
+@if(ratedMovies$ | async; as ratedMovies) {
+  <ul class="list-decimal ml-6">
+    @for(movie of ratedMovies?.results; track movie.id) {
+      <li class="rated-movie-item">
+        <div class="rated-movie-wrapper">
+          <span>{{ movie.title }} </span>
+          <span class="ml-4">my rating: <app-rate [vote_average]="movie.rating"></app-rate></span>
+          <app-rating textButton="Update rating" [movieId]="movie.id"></app-rating>
+        </div>
+      </li>
+    } @empty {
+      <li class="text-center text-gray-500 text-2xl font-bold list-none">
+        You have no rated movies.
+      </li>
+    }
+  </ul>
+} @else {
+  <p class="text-center">Loading...</p>
+}

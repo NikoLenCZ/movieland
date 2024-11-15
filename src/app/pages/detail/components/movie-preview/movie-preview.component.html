@@ -41,6 +41,8 @@
         @if (movieDetail.homepage) {
           <a [href]="movieDetail.homepage" target="_blank">{{ movieDetail.title }} homepage</a>
         }
+        <app-rating class="mt-4" [movieId]="movieDetail.id"/>
+
       </div>
       <div class="movie-detail__overview">
         <h2 class="movie-detail__overview-title">Overview</h2>

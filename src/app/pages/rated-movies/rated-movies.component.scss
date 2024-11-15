@@ -1,0 +1,7 @@
+.rated-movie-item {
+  @apply my-4;
+}
+
+.rated-movie-wrapper {
+  @apply grid grid-cols-[1fr_1fr_2fr] items-center gap-4;
+}

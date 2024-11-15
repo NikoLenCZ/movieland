@@ -2,10 +2,15 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovieDetail } from '../../../../models/movie.model';
 import { RateComponent } from '../../../../components/rate/rate.component';
+import { RatingComponent } from '../../../../components/rating/rating.component';
 @Component({
   selector: 'app-movie-preview',
   standalone: true,
-  imports: [CommonModule, RateComponent],
+  imports: [
+    CommonModule,
+    RateComponent,
+    RatingComponent
+  ],
   templateUrl: './movie-preview.component.html',
   styleUrl: './movie-preview.component.scss'
 })

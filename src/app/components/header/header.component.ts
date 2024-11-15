@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { WatchlistService } from '../../services/watchlist.service';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
+import { RatingService } from '../../services/rating.service';
+import { map, tap } from 'rxjs';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,7 +15,20 @@ export class HeaderComponent {
   title = 'MovieLand';
 
   private watchlistService = inject(WatchlistService);
+  private ratingService = inject(RatingService);
 
-  count$ = this.watchlistService.getWatchlist().pipe(map(watchlist => watchlist.length));
+  watchlistCount$ = this.watchlistService.getWatchlist().pipe(map(watchlist => watchlist.length));
+
+  ratedMoviesCount$ = this.ratingService.getRatedMovies().pipe(
+    tap(console.log),
+    map(ratedMovies => ratedMovies?.results.length || 0)
+  );
+
+  _info = this.ratedMoviesCount$.subscribe({
+    next: (value) => console.log('ratedMoviesCount$', value),
+    error: (error) => console.error('ratedMoviesCount$', error),
+    complete: () => console.log('ratedMoviesCount$ completed'),
+  })
+
 
 }

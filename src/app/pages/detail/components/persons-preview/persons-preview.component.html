@@ -23,7 +23,7 @@
     }
   </app-wrapper-list>
   @if (persons.length > limitPersons) {
-    <div class="persons-actions">
+    <div class="persons-actions mt-8">
       @if (!showedAllPersons) {
         @if (isActor(persons[0])) {
           <app-button type="primary" (click)="showMore()">Show more actors</app-button>

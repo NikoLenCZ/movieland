@@ -36,3 +36,15 @@ img, svg, video, canvas, audio, iframe, embed, object {
 a:not(.main-logo), .link {
   @apply text-fuchsia-600 font-medium hover:text-fuchsia-400 transition-colors duration-300 underline;
 }
+
+.bookmark-icon {
+  @apply w-4 h-4 stroke-2 mt-1;
+}
+
+.watchlist svg {
+  @apply stroke-white fill-none;
+}
+
+.watchlist-secondary svg {
+  @apply fill-white stroke-none;
+}

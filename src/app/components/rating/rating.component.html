@@ -1,0 +1,22 @@
+<div class="flex items-center gap-2">
+  <span class="rating">Rating: </span>
+  <!-- <svg class="star-icon" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+    <use href="/icons.svg#star-icon" />
+  </svg> -->
+  <select class="border-white border bg-slate-800 rounded-md p1" [(ngModel)]="rating">
+    <option class="bg-slate-800" value="0">0</option>
+    <option class="bg-slate-800" value="10">10</option>
+    <option class="bg-slate-800" value="20">20</option>
+    <option class="bg-slate-800" value="30">30</option>
+    <option class="bg-slate-800" value="40">40</option>
+    <option class="bg-slate-800" value="50">50</option>
+    <option class="bg-slate-800" value="60">60</option>
+    <option class="bg-slate-800" value="70">70</option>
+    <option class="bg-slate-800" value="80">80</option>
+    <option class="bg-slate-800" value="90">90</option>
+    <option class="bg-slate-800" value="100">100</option>
+  </select>
+
+    <app-button class="mt-0" type="primary" (click)="sendRating(movieId)">{{ textButton }}</app-button>
+    <app-button class="mt-0" type="secondary" (click)="deleteRating(movieId)">Delete rating</app-button>
+</div>

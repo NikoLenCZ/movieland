@@ -7,6 +7,7 @@ import { interceptApiKey } from './services/api-key.interceptor';
 import { errorHandlingInterceptor } from './services/error-handling.interceptor';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { interceptGuestSession } from './services/guest-session.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -14,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withInterceptors([interceptApiKey, errorHandlingInterceptor])),
+    provideHttpClient(withInterceptors([interceptApiKey, errorHandlingInterceptor, interceptGuestSession])),
     provideToastr(),
     provideAnimations(),
   ],

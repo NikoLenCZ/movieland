@@ -1,7 +1,12 @@
 @if (movie$ | async; as m) {
-  <div class="flex justify-end z-50">
+  <div class="flex justify-end mt-8 z-50">
     <app-button class="z-50" [type]="m.isInWatchlist ? 'watchlist-secondary' : 'watchlist'" (click)="toggleWatchlist(m.movieDetail.id)">
+      <svg class="bookmark-icon" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+        <use href="/icons.svg#bookmark-icon" />
+      </svg>
+
       {{ m.isInWatchlist ? 'remove from watchlist' : 'add to watchlist' }}
+
     </app-button>
     </div>
     <app-movie-preview [movieDetail]="m.movieDetail"/>

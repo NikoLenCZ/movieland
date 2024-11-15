@@ -1,7 +1,3 @@
-:host {
-  @apply mt-8;
-}
-
 button {
   @apply px-4 py-2 rounded-md;
 }
@@ -19,5 +15,5 @@ button {
 }
 
 .watchlist-secondary {
-  @apply border-fuchsia-700 border-2 font-bold hover:bg-fuchsia-700 transition-colors duration-300;
+  @apply border-fuchsia-700 border-2 font-bold hover:bg-fuchsia-700 transition-colors duration-300 stroke-none;
 }

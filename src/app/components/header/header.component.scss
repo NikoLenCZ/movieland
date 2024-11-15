@@ -19,6 +19,10 @@ ul {
   @apply flex gap-4 list-none m-0 p-0;
 }
 
+.nav-item {
+  @apply grid grid-flow-col;
+}
+
 a {
   @apply text-inherit;
 }
@@ -32,7 +36,15 @@ a {
 }
 
 .badge-container {
-  @apply bg-cyan-700 text-white rounded-full min-w-6 min-h-6 text-center leading-6 relative -bottom-2 text-sm aspect-square max-w-8 flex items-center justify-center;
+  @apply  text-white rounded-full min-w-6 min-h-6 text-center leading-6 relative -bottom-2 text-sm aspect-square max-w-8 flex items-center justify-center;
+}
+
+.primary {
+  @apply bg-cyan-700;
+}
+
+.secondary {
+  @apply bg-fuchsia-700;
 }
 
 .zero {
