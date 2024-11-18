@@ -48,3 +48,7 @@ a:not(.main-logo), .link {
 .watchlist-secondary svg {
   @apply fill-white stroke-none;
 }
+
+button .hidden-text{
+  @apply hidden hover:inline-block transition-all duration-300;
+}

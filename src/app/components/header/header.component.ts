@@ -17,18 +17,21 @@ export class HeaderComponent {
   private watchlistService = inject(WatchlistService);
   private ratingService = inject(RatingService);
 
-  watchlistCount$ = this.watchlistService.getWatchlist().pipe(map(watchlist => watchlist.length));
+  // watchlistCount$ = this.watchlistService.getWatchlist().pipe(map(watchlist => watchlist.length));
+
+  watchlistCount$ = this.watchlistService.getWatchlist().pipe(
+    map(watchlist => watchlist?.length || 0)
+  );
 
   ratedMoviesCount$ = this.ratingService.getRatedMovies().pipe(
-    tap(console.log),
     map(ratedMovies => ratedMovies?.results.length || 0)
   );
 
-  _info = this.ratedMoviesCount$.subscribe({
-    next: (value) => console.log('ratedMoviesCount$', value),
-    error: (error) => console.error('ratedMoviesCount$', error),
-    complete: () => console.log('ratedMoviesCount$ completed'),
-  })
+  // _info = this.ratedMoviesCount$.subscribe({
+  //   next: (value) => console.log('ratedMoviesCount$', value),
+  //   error: (error) => console.error('ratedMoviesCount$', error),
+  //   complete: () => console.log('ratedMoviesCount$ completed'),
+  // })
 
 
 }

@@ -1,4 +1,6 @@
-<app-dropdown></app-dropdown>
+@if (movieDetails$ | async) {
+  <app-dropdown class="rela"/>
+}
 <ul>
   @for (movie of movieDetails$ | async; track movie.id) {
     <li class="watchlist__item">

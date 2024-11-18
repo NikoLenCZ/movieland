@@ -27,7 +27,7 @@ export class WatchlistService {
       currentWatchlist = [...currentWatchlist, movieId];
       localStorage.setItem('watchlist', JSON.stringify(currentWatchlist));
       this.watchlistSubject.next(currentWatchlist);
-      this.toastr.success('Added to watchlist');
+      this.toastr.success(`Movie with id ${movieId} added to watchlist`);
     }
   }
 
@@ -38,7 +38,7 @@ export class WatchlistService {
       currentWatchlist = currentWatchlist.filter(id => id !== movieId);
       localStorage.setItem('watchlist', JSON.stringify(currentWatchlist));
       this.watchlistSubject.next(currentWatchlist);
-      this.toastr.warning('Removed from watchlist');
+      this.toastr.warning(`Movie with id ${movieId} removed from watchlist`);
     }
   }
 

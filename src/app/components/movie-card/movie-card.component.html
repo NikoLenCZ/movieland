@@ -9,6 +9,14 @@
       <p class="movie-title">{{ movie.title }}</p>
       <p class="movie-subtitle">release on: {{ movie.release_date | date:'dd.MM.yyyy' }}</p>
       <p class="movie-view-info link">view info</p>
+      <app-button class="watchlist-absolute" [type]="(isInWatchlist$ | async) ? 'watchlist-secondary' : 'watchlist'" [title]="(isInWatchlist$ | async) ? 'remove from watchlist' : 'add to watchlist'" (click)="toggleWatchlist(movie);$event.stopPropagation();$event.preventDefault()">
+        <svg class="bookmark-icon" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+          <use href="/icons.svg#bookmark-icon" />
+        </svg>
+        <span class="hidden">
+          {{ (isInWatchlist$ | async) ? 'remove from watchlist' : 'add to watchlist' }}
+        </span>
+      </app-button>
     </div>
     <app-rate class="rate-absolute" [vote_average]="movie.vote_average"></app-rate>
   </a>

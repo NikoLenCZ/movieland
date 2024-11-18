@@ -1,5 +1,5 @@
 button {
-  @apply px-4 py-2 rounded-md;
+  @apply px-4 py-2 rounded-md transition-all duration-500 ease-in-out;
 }
 
 .primary {
@@ -11,9 +11,9 @@ button {
   }
 
 .watchlist {
-  @apply bg-fuchsia-700 font-bold hover:bg-fuchsia-600 transition-colors duration-300;
+  @apply bg-fuchsia-700 font-bold border-fuchsia-700 border-2 hover:bg-fuchsia-600 transition-colors duration-300;
 }
 
 .watchlist-secondary {
-  @apply border-fuchsia-700 border-2 font-bold hover:bg-fuchsia-700 transition-colors duration-300 stroke-none;
+  @apply border-fuchsia-700 font-bold bg-gray-950/50 border-2 hover:bg-fuchsia-700 transition-colors duration-300;
 }

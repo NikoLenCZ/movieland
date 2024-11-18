@@ -83,3 +83,7 @@ img {
 .rate-absolute {
   @apply absolute top-1 right-1;
 }
+
+.watchlist-absolute {
+  @apply absolute bottom-[.3rem] left-1 z-50;
+}
